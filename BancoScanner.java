@@ -13,6 +13,14 @@ public class BancoScanner {
         this.saldo = saldo;
     }
 
+    public void verDatosCuenta(){
+        System.out.println("---------- Datos de la cuenta ----------");
+        System.out.println("Nombre del titular: " + this.titular);
+        System.out.println("El número de la cuenta es: " + this.numeroCuenta);
+        System.out.println("El saldo de la cuenta es: " + this.saldo);
+        System.out.println("----------------------------------------");
+    }
+
     public void depositar(Integer cantidad){
         if (cantidad < 500){
             System.out.println("Lo sentimos la cantidad mínima para depositar es 500");
@@ -53,21 +61,24 @@ public class BancoScanner {
         System.out.print("Ingrese el saldo inicial: ");
         Integer saldoInicial = scanner.nextInt();
 
-        CuentaBancaria cuenta = new CuentaBancaria(nombre, numCuenta, saldoInicial);
+        System.out.println("-----------------------------------------------------------------");
+
+        BancoScanner cuenta = new BancoScanner(nombre, numCuenta, saldoInicial);
 
         int opcion;
         do {
-            System.out.println("Selecciona una opción");
+            System.out.println("Bienvenido al menú del banco. Por favor, selecciona una opción");
+            System.out.println("1. Ver datos de la cuenta");
             System.out.println("2. Depositar");
             System.out.println("3. Retirar");
             System.out.println("4. Transferir");
             System.out.println("5. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Ingrese el número de la opción correspondiente ");
             opcion = scanner.nextInt();
 
             switch (opcion) {
                 case 1:
-                    cuenta.mostrarDatosCuenta();
+                    cuenta.verDatosCuenta();
                     break;
 
                 case 2:
@@ -95,7 +106,7 @@ public class BancoScanner {
                     break;
 
                 default:
-                    System.out.println("Opción no válida.");
+                    System.out.println("Opción no válida. Intentaló de nuevo");
                     break;
             }
         } while (opcion != 5);
